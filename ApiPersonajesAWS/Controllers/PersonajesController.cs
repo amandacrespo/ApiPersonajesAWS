@@ -28,8 +28,12 @@ namespace ApiPersonajesAWS.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdatePersonaje(int idpersonaje, string personaje, string imagen) {
-            await this.repo.UpdatePersonaje(idpersonaje, personaje, imagen);
+        public async Task<IActionResult> UpdatePersonaje([FromBody] Personaje personaje) {
+            await this.repo.UpdatePersonaje(
+                personaje.idpersonaje,
+                personaje.personaje,
+                personaje.imagen
+            );
             return Ok(new { mensaje = "Personaje actualizado" });
         }
     }

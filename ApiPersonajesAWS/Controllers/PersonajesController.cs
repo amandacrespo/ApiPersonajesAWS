@@ -22,9 +22,15 @@ namespace ApiPersonajesAWS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePersonaje(string personaje, string img) {
-            await this.repo.CreatePersonaje(personaje, img);
+        public async Task<IActionResult> CreatePersonaje(string personaje, string imagen) {
+            await this.repo.CreatePersonaje(personaje, imagen);
             return Ok(new { mensaje = "Personaje creado" });
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePersonaje(int idpersonaje, string personaje, string imagen) {
+            await this.repo.UpdatePersonaje(idpersonaje, personaje, imagen);
+            return Ok(new { mensaje = "Personaje actualizado" });
         }
     }
 }
